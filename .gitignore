@@ -32,3 +32,4 @@
 *.app
 
 tags
+.DS_STORE
