@@ -13,20 +13,23 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include <iostream>
+# include <iomanip>
 # include "Contact.hpp"
 
 class PhoneBook {
-private:
 	Contact mContacts[9];
 	int		mCount = 0;
 
 	bool isValidCommand(std::string const& command) const;
+	void execute(std::string const& command);
 	void add();
 	void search() const;
 public:
 	Contact getContact(int index) const;
 	void setContact(const Contact& contact);
-	void executeCommand(std::string const& command);
+	void printHeader() const;
+	void loop();
 };
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 17:45:11 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/12/13 17:45:11 by ahamdaou         ###   ########.fr       */
+/*   Created: 2021/12/15 15:07:23 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/12/15 15:07:23 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 int	main(void) {
 	PhoneBook phoneBook;
 
-	std::cout << "===[welcome to PhoneBook]===" << std::endl;
-	while (true) {
-		std::cout << "Enter command: ";
-		std::string command;
-		std::cin >> command;
-		phoneBook.executeCommand(command);
-	}
+	system("clear");
+	phoneBook.loop();
 
 	return 0;
 }
