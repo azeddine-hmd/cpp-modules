@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 15:07:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/12/15 15:07:23 by ahamdaou         ###   ########.fr       */
+/*   Created: 2021/12/16 17:08:37 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/12/16 17:08:37 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "utils.hpp"
 
-int	main(void) {
-	PhoneBook phoneBook;
-
-	system("clear");
-	phoneBook.loop();
-	return 0;
+std::string str_truncate(std::string const& str) {
+	std::string truncated;
+	if (str.length() > 10)
+	{
+		truncated = str.substr(0, 10);
+		truncated[truncated.length() - 1] = '.';
+	} else {
+		truncated = str;
+	}
+	return truncated;
 }

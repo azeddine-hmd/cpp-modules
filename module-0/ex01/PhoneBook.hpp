@@ -16,19 +16,24 @@
 # include <iostream>
 # include <iomanip>
 # include "Contact.hpp"
+# include "utils.hpp"
+
+# define SUCCESS_CREATION "contact has been created successfully!"
 
 class PhoneBook {
 	Contact mContacts[9];
-	int		mCount = 0;
+	int		mCount;
 
 	bool isValidCommand(std::string const& command) const;
 	void execute(std::string const& command);
+	void printHeader() const;
 	void add();
 	void search() const;
 public:
+	PhoneBook();
+	~PhoneBook();
 	Contact getContact(int index) const;
-	void setContact(const Contact& contact);
-	void printHeader() const;
+	void setContact(Contact const& contact);
 	void loop();
 };
 

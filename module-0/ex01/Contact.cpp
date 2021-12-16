@@ -12,24 +12,32 @@
 
 #include "Contact.hpp"
 
-void Contact::setFirstName(std::string& firstName) {
+Contact::Contact(): mIsEmpty(true) {}
+
+Contact::~Contact() {}
+
+void Contact::setFirstName(std::string const& firstName) {
 	this->mFirstName = firstName;
 }
 
-void Contact::setLastName(std::string& lastName) {
+void Contact::setLastName(std::string const& lastName) {
 	this->mLastName = lastName;
 }
 
-void Contact::setNickname(std::string& nickname) {
+void Contact::setNickname(std::string const& nickname) {
 	this->mNickname = nickname;
 }
 
-void Contact::setPhoneNumber(std::string& phoneNumber) {
+void Contact::setPhoneNumber(std::string const& phoneNumber) {
 	this->mPhoneNumber = phoneNumber;
 }
 
-void Contact::setDarkestSecret(std::string& darkestSecret) {
+void Contact::setDarkestSecret(std::string const& darkestSecret) {
 	this->mDarkestSecret = darkestSecret;
+}
+
+void Contact::setIsEmpty(bool isEmpty) {
+	this->mIsEmpty = isEmpty;
 }
 
 std::string Contact::getFirstName() const {
@@ -50,4 +58,8 @@ std::string Contact::getPhoneNumber() const {
 
 std::string Contact::getDarkestSecret() const {
 	return this->mDarkestSecret;
+}
+
+bool Contact::getIsEmpty() const {
+	return this->mIsEmpty;
 }

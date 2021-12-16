@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 15:07:23 by ahamdaou          #+#    #+#             */
-/*   Updated: 2021/12/15 15:07:23 by ahamdaou         ###   ########.fr       */
+/*   Created: 2021/12/16 17:09:26 by ahamdaou          #+#    #+#             */
+/*   Updated: 2021/12/16 17:09:26 by ahamdaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
-int	main(void) {
-	PhoneBook phoneBook;
+# include <iostream>
 
-	system("clear");
-	phoneBook.loop();
-	return 0;
-}
+std::string str_truncate(std::string const& str);
+
+#endif

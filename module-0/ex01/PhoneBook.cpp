@@ -12,6 +12,10 @@
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook(): mCount(0) {}
+
+PhoneBook::~PhoneBook() {}
+
 Contact PhoneBook::getContact(int index) const {
 	return this->mContacts[index];
 }
@@ -40,12 +44,11 @@ bool PhoneBook::isValidCommand(std::string const& command) const {
 		return true;
 	else if (command == "SEARCH")
 		return true;
-	std::cout << command << ": command not found" << std::endl;
 	return false;
 }
 
 void PhoneBook::execute(const std::string &command) {
-	if (!isValidCommand(command)) { return; }
+	std::cout << std::endl;
 	if (command == "EXIT") {
 		exit(0);
 	} else if (command == "ADD") {
@@ -58,56 +61,58 @@ void PhoneBook::execute(const std::string &command) {
 void PhoneBook::loop() {
 	std::string command;
 
+	system("clear");
 	this->printHeader();
 	while (true) {
 		std::cout << std::endl;
 		std::cout << "Enter command: ";
 		std::getline(std::cin, command);
-		this->execute(command);
+		if (std::cin.eof())
+			break;
+		if (isValidCommand(command)) {
+			this->execute(command);
+		} else {
+			std::cout << command << ": command not found" << std::endl;
+		}
 	}
 }
 
 void PhoneBook::add() {
 	Contact newContact;
+	std::string input;
+
+	std::cout << "=====[Contact Information]=====" << std::endl;
+	std::cout << "First Name: ";
+	std::getline(std::cin, input);
+	newContact.setFirstName(input);
+	std::cout << "Last Name: ";
+	std::getline(std::cin, input);
+	newContact.setLastName(input);
+	std::cout << "Nickname: ";
+	std::getline(std::cin, input);
+	newContact.setNickname(input);
+	std::cout << "Phone Number: ";
+	std::getline(std::cin, input);
+	newContact.setPhoneNumber(input);
+	std::cout << "Darkest Secret: ";
+	std::getline(std::cin, input);
+	newContact.setDarkestSecret(input);
+	newContact.setIsEmpty(false);
 
 	std::cout << std::endl;
-	std::cout << "=====[Contact Information]=====" << std::endl;
-	for (int i = 0; i < 5; i++) {
-		std::string input;
-		switch (i) {
-			case 0:
-				std::cout << "First Name: ";
-				std::getline(std::cin, input);
-				newContact.setFirstName(input);
-				break;
-			case 1:
-				std::cout << "Last Name: ";
-				std::getline(std::cin, input);
-				newContact.setLastName(input);
-				break;
-			case 2:
-				std::cout << "Nickname: ";
-				std::getline(std::cin, input);
-				newContact.setNickname(input);
-				break;
-			case 3:
-				std::cout << "Phone Number: ";
-				std::getline(std::cin, input);
-				newContact.setPhoneNumber(input);
-				break;
-			case 4:
-				std::cout << "Darkest Secret: ";
-				std::getline(std::cin, input);
-				newContact.setDarkestSecret(input);
-				break;
-		}
-
-	}
+	std::cout << newContact.getFirstName() << " "
+		<< newContact.getLastName() << " ("
+		<< newContact.getNickname() << ") "
+		<< SUCCESS_CREATION << std::endl;
 
 	this->setContact(newContact);
 }
 
 void PhoneBook::search() const {
+	std::cout << std::setw(10) << str_truncate("index") << "|";
+	std::cout << std::setw(10) << str_truncate("first name") << "|";
+	std::cout << std::setw(10) << str_truncate("last name") << "|";
+	std::cout << std::setw(10) << str_truncate("nickname");
+
 	std::cout << std::endl;
-	//TODO: impelment
 }

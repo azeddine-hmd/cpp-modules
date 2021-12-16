@@ -21,21 +21,23 @@ class Contact {
 	std::string mNickname;
 	std::string mPhoneNumber;
 	std::string mDarkestSecret;
+	bool mIsEmpty;
 
 public:
-	// setters
-	void setFirstName(std::string& firstName);
-	void setLastName(std::string& lastName);
-	void setNickname(std::string& nickname);
-	void setPhoneNumber(std::string& phoneNumber);
-	void setDarkestSecret(std::string& darkestSecret);
-
-	// getters
+	Contact();
+	~Contact();
+	void setFirstName(std::string const& firstName);
+	void setLastName(std::string const& lastName);
+	void setNickname(std::string const& nickname);
+	void setPhoneNumber(std::string const& phoneNumber);
+	void setDarkestSecret(std::string const& darkestSecret);
+	void setIsEmpty(bool isEmpty);
 	std::string getFirstName() const;
 	std::string getLastName() const;
 	std::string getNickname() const;
 	std::string getPhoneNumber() const;
 	std::string getDarkestSecret() const;
+	bool getIsEmpty() const;
 };
 
 #endif
