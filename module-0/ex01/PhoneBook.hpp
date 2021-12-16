@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <iomanip>
+# include <cstdlib>
 # include "Contact.hpp"
 # include "utils.hpp"
 

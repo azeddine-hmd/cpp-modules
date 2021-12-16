@@ -50,7 +50,7 @@ bool PhoneBook::isValidCommand(std::string const& command) const {
 void PhoneBook::execute(const std::string &command) {
 	std::cout << std::endl;
 	if (command == "EXIT") {
-		exit(0);
+		std::exit(0);
 	} else if (command == "ADD") {
 		add();
 	} else if (command == "SEARCH") {

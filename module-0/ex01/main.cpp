@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <cstdlib>
 
 int	main(void) {
 	PhoneBook phoneBook;
 
-	system("clear");
+	std::system("clear");
 	phoneBook.loop();
 	return 0;
 }
