@@ -21,7 +21,7 @@
 # define SUCCESS_CREATION "contact has been created successfully!"
 
 class PhoneBook {
-	Contact mContacts[9];
+	Contact mContacts[8];
 	int		mCount;
 
 	bool isValidCommand(std::string const& command) const;

@@ -15,6 +15,6 @@
 
 # include <iostream>
 
-std::string str_truncate(std::string const& str);
+std::string truncate(std::string const& str);
 
 #endif

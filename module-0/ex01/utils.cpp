@@ -12,7 +12,7 @@
 
 #include "utils.hpp"
 
-std::string str_truncate(std::string const& str) {
+std::string truncate(std::string const& str) {
 	std::string truncated;
 	if (str.length() > 10)
 	{

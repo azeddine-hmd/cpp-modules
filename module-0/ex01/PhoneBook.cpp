@@ -21,8 +21,8 @@ Contact PhoneBook::getContact(int index) const {
 }
 
 void PhoneBook::setContact(Contact const& newContact) {
-	this->mContacts[mCount % 9] = newContact;
-	this->mCount++;
+	mContacts[mCount % 8] = newContact;
+	mCount++;
 }
 
 void PhoneBook::printHeader() const {
@@ -61,7 +61,6 @@ void PhoneBook::execute(const std::string &command) {
 void PhoneBook::loop() {
 	std::string command;
 
-	system("clear");
 	this->printHeader();
 	while (true) {
 		std::cout << std::endl;
@@ -105,14 +104,27 @@ void PhoneBook::add() {
 		<< newContact.getNickname() << ") "
 		<< SUCCESS_CREATION << std::endl;
 
-	this->setContact(newContact);
+	setContact(newContact);
 }
 
 void PhoneBook::search() const {
-	std::cout << std::setw(10) << str_truncate("index") << "|";
-	std::cout << std::setw(10) << str_truncate("first name") << "|";
-	std::cout << std::setw(10) << str_truncate("last name") << "|";
-	std::cout << std::setw(10) << str_truncate("nickname");
+	std::cout << std::setw(10) << truncate("index") << "|";
+	std::cout << std::setw(10) << truncate("first name") << "|";
+	std::cout << std::setw(10) << truncate("last name") << "|";
+	std::cout << std::setw(10) << truncate("nickname");
+	std::cout << std::endl;
+
+	for (unsigned i = 0; i < sizeof(mContacts)/sizeof(Contact); i++) {
+		Contact contact = mContacts[i];
+
+		if (contact.getIsEmpty())
+			continue;
+		std::cout << std::setw(10) << i + 1 << "|";
+		std::cout << std::setw(10) << truncate(contact.getFirstName()) << "|";
+		std::cout << std::setw(10) << truncate(contact.getLastName()) << "|";
+		std::cout << std::setw(10) << truncate(contact.getNickname());
+		std::cout << std::endl;
+	}
 
 	std::cout << std::endl;
 }
