@@ -34,5 +34,8 @@
 tags
 *.DS_Store
 
+# Binaries
 megaphone
 phonebook
+zombie
+zombiehorde
