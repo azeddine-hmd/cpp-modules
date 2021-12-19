@@ -18,5 +18,6 @@ int	main(void) {
 	delete zombie;
 	randomChump(std::string("zomboo"));
 	randomChump(std::string("walking dead"));
+
 	return 0;
 }
