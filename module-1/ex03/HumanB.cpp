@@ -12,10 +12,10 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB( void ) {}
+HumanB::HumanB( void ): mWeapon(nullptr) {}
 
 HumanB:: HumanB( HumanB const& copy)
-	: mWeapon(copy.getWeapon()), mName(copy.getName()) {}
+	: mWeapon(new Weapon(copy.getWeapon())), mName(copy.getName()) {}
 
 HumanB::HumanB( std::string const& name ): mName(name) {}
 
@@ -34,7 +34,7 @@ std::string const&	HumanB::getName( void ) const {
 }
 
 HumanB&	HumanB::operator=( HumanB const& other ) {
-	mWeapon = other.getWeapon();
+	mWeapon = new other.getWeapon();
 	mName = other.getName();
 
 	return *this;

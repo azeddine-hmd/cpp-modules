@@ -16,8 +16,8 @@
 #include "Weapon.hpp"
 
 class HumanA {
-	Weapon mWeapon;
-	std::string mName;
+	Weapon		mWeapon;
+	std::string	mName;
 
 	HumanA( void );
 public:
