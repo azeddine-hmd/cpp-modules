@@ -17,49 +17,49 @@ Contact::Contact(): mIsEmpty(true) {}
 Contact::~Contact() {}
 
 void Contact::setFirstName(std::string const& firstName) {
-	this->mFirstName = firstName;
+	mFirstName = firstName;
 }
 
 void Contact::setLastName(std::string const& lastName) {
-	this->mLastName = lastName;
+	mLastName = lastName;
 }
 
 void Contact::setNickname(std::string const& nickname) {
-	this->mNickname = nickname;
+	mNickname = nickname;
 }
 
 void Contact::setPhoneNumber(std::string const& phoneNumber) {
-	this->mPhoneNumber = phoneNumber;
+	mPhoneNumber = phoneNumber;
 }
 
 void Contact::setDarkestSecret(std::string const& darkestSecret) {
-	this->mDarkestSecret = darkestSecret;
+	mDarkestSecret = darkestSecret;
 }
 
 void Contact::setIsEmpty(bool isEmpty) {
-	this->mIsEmpty = isEmpty;
+	mIsEmpty = isEmpty;
 }
 
 std::string Contact::getFirstName() const {
-	return this->mFirstName;
+	return mFirstName;
 }
 
 std::string Contact::getLastName() const {
-	return this->mLastName;
+	return mLastName;
 }
 
 std::string Contact::getNickname() const {
-	return this->mNickname;
+	return mNickname;
 }
 
 std::string Contact::getPhoneNumber() const {
-	return this->mPhoneNumber;
+	return mPhoneNumber;
 }
 
 std::string Contact::getDarkestSecret() const {
-	return this->mDarkestSecret;
+	return mDarkestSecret;
 }
 
 bool Contact::getIsEmpty() const {
-	return this->mIsEmpty;
+	return mIsEmpty;
 }

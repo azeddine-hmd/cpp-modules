@@ -17,7 +17,7 @@ PhoneBook::PhoneBook(): mCount(0) {}
 PhoneBook::~PhoneBook() {}
 
 Contact PhoneBook::getContact(int index) const {
-	return this->mContacts[index];
+	return mContacts[index];
 }
 
 void PhoneBook::setContact(Contact const& newContact) {
@@ -61,7 +61,7 @@ void PhoneBook::execute(const std::string &command) {
 void PhoneBook::loop() {
 	std::string command;
 
-	this->printHeader();
+	printHeader();
 	while (true) {
 		std::cout << std::endl;
 		std::cout << "Enter command: ";
@@ -69,7 +69,7 @@ void PhoneBook::loop() {
 		if (std::cin.eof())
 			break;
 		if (isValidCommand(command)) {
-			this->execute(command);
+			execute(command);
 		} else {
 			std::cout << command << ": command not found" << std::endl;
 		}
