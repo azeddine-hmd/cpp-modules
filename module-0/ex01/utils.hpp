@@ -16,5 +16,7 @@
 # include <iostream>
 
 std::string truncate(std::string const& str);
+int ft_atoi(const char *str);
+bool is_int(std::string const& s);
 
 #endif

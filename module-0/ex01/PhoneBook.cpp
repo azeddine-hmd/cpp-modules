@@ -16,7 +16,7 @@ PhoneBook::PhoneBook(): mCount(0) {}
 
 PhoneBook::~PhoneBook() {}
 
-Contact PhoneBook::getContact(int index) const {
+Contact const& PhoneBook::getContact(int index) const {
 	return mContacts[index];
 }
 
@@ -107,13 +107,26 @@ void PhoneBook::add() {
 	setContact(newContact);
 }
 
-void PhoneBook::search() const {
+void    PhoneBook::printContactHeader() const {
 	std::cout << std::setw(10) << truncate("index") << "|";
 	std::cout << std::setw(10) << truncate("first name") << "|";
 	std::cout << std::setw(10) << truncate("last name") << "|";
 	std::cout << std::setw(10) << truncate("nickname");
 	std::cout << std::endl;
+}
 
+void    PhoneBook::printContactFromIndex(int index) const {
+    Contact const& contact = getContact(index);
+
+    // print contact feilds, one on each line
+    std::cout << "First Name: " << contact.getFirstName() << std::endl;
+    std::cout << "Last Name: " << contact.getLastName() << std::endl;
+    std::cout << "Nickname: " << contact.getNickname() << std::endl;
+    std::cout << "Phone number: " << contact.getPhoneNumber() << std::endl;
+    std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
+}
+
+void    PhoneBook::printAllContactInfo() const {
 	for (unsigned i = 0; i < sizeof(mContacts)/sizeof(Contact); i++) {
 		Contact contact = mContacts[i];
 
@@ -125,6 +138,27 @@ void PhoneBook::search() const {
 		std::cout << std::setw(10) << truncate(contact.getNickname());
 		std::cout << std::endl;
 	}
+    std::cout << std::endl;
+}
 
-	std::cout << std::endl;
+void PhoneBook::search() const {
+    printContactHeader();
+    printAllContactInfo();
+
+    // obtain search index string
+    std::cout << "SEARCH> index> ";
+    std::string index_str;
+    std::getline(std::cin, index_str);
+
+    // convert search index to integer
+    if (!is_int(index_str.c_str())) {
+        std::cout << "Error: Invalid index" << std::endl;
+    } else if (ft_atoi(index_str.c_str()) < 1 || ft_atoi(index_str.c_str()) > 8) {
+        std::cout << "Error: Index out of range" << std::endl;
+    } else if (getContact(ft_atoi(index_str.c_str()) - 1).getIsEmpty()) {
+        std::cout << "Error: Contact index is empty" << std::endl;
+    } else {
+        int index = ft_atoi(index_str.c_str());
+        printContactFromIndex(--index);
+    }
 }

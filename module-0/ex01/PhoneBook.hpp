@@ -29,11 +29,15 @@ class PhoneBook {
 	void execute(std::string const& command);
 	void printHeader() const;
 	void add();
+
 	void search() const;
+    void printContactHeader() const;
+    void printContactFromIndex(int index) const;
+    void printAllContactInfo() const;
 public:
 	PhoneBook();
 	~PhoneBook();
-	Contact getContact(int index) const;
+	Contact const& getContact(int index) const;
 	void setContact(Contact const& contact);
 	void loop();
 };

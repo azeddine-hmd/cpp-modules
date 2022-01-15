@@ -15,7 +15,6 @@
 
 int	main(void) {
 	PhoneBook phoneBook;
-
 	std::system("clear");
 	phoneBook.loop();
 	return 0;
