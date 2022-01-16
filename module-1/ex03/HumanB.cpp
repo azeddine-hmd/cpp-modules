@@ -12,34 +12,24 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB( void ): mWeapon(nullptr) {}
-
-HumanB:: HumanB( HumanB const& copy)
-	: mWeapon(new Weapon(copy.getWeapon())), mName(copy.getName()) {}
+HumanB::HumanB( void ): mWeapon(NULL) {}
 
 HumanB::HumanB( std::string const& name ): mName(name) {}
 
 HumanB::~HumanB( void ) {}
 
-Weapon const&	HumanB::getWeapon( void ) const {
+Weapon* HumanB::getWeapon( void ) const {
 	return mWeapon;
 }
 
-void	HumanB::setWeapon( Weapon const& weapon ) {
-	mWeapon = weapon;
+void	HumanB::setWeapon( Weapon& weapon ) {
+	mWeapon = &weapon;
 }
 
 std::string const&	HumanB::getName( void ) const {
 	return mName;
 }
 
-HumanB&	HumanB::operator=( HumanB const& other ) {
-	mWeapon = new other.getWeapon();
-	mName = other.getName();
-
-	return *this;
-}
-
 void	HumanB::attack( void ) const {
-	std::cout << mName << " attacks with his " << mWeapon << std::endl;
+	std::cout << mName << " attacks with his " << *mWeapon << std::endl;
 }

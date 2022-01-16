@@ -16,23 +16,21 @@
 #include "Weapon.hpp"
 
 class HumanA {
-	Weapon		mWeapon;
+	Weapon*		mWeapon;
 	std::string	mName;
 
 	HumanA( void );
 public:
-	HumanA( HumanA const& copy );
-	HumanA( Weapon const& weapon );
-	HumanA( std::string const& name, Weapon const& weapon);
+	HumanA( Weapon& weapon );
+	HumanA( std::string const& name, Weapon& weapon);
 	~HumanA( void );
 
 	void				attack( void ) const;
 
 	Weapon const&		getWeapon( void ) const;
-	void				setWeapon( Weapon const& weapon );
+	void				setWeapon( Weapon& weapon );
 	std::string const&	getName( void ) const;
-	void				setName( std::string const& name );
-	HumanA&				operator=( HumanA const& other );
+	void				setName( std::string& name );
 };
 
 #endif

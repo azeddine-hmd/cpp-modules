@@ -27,11 +27,10 @@ public:
 
 	void				attack( void ) const;
 
-	Weapon const&		getWeapon( void ) const;
-	void				setWeapon( Weapon const& weapon );
+	Weapon*	            getWeapon( void ) const;
+	void				setWeapon( Weapon& weapon );
 	std::string const &	getName( void ) const;
 	void				setName( std::string const& name );
-	HumanB&				operator=( HumanB const& other );
 };
 
 #endif

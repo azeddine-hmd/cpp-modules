@@ -20,13 +20,11 @@ class Weapon {
 
 public:
 	Weapon( void );
-	Weapon( Weapon const& copy);
 	Weapon( std::string const& type );
 	~Weapon( void );
 
 	std::string const&	getType( void ) const;
 	void				setType( std::string const& type);
-	Weapon&				operator=( Weapon const& other );
 };
 
 std::ostream&	operator<<( std::ostream& out, Weapon const& weapon );

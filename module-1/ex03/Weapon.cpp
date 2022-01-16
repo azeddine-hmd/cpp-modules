@@ -14,8 +14,6 @@
 
 Weapon::Weapon( void ) {}
 
-Weapon::Weapon( Weapon const& copy ): mType(copy.getType()) {}
-
 Weapon::Weapon( std::string const& type ): mType(type) {}
 
 Weapon::~Weapon( void ) {}
@@ -26,12 +24,6 @@ std::string const&	Weapon::getType( void ) const {
 
 void	Weapon::setType( std::string const& type) {
 	mType = type;
-}
-
-Weapon&	Weapon::operator=( Weapon const& other ) {
-	mType = other.getType();
-
-	return *this;
 }
 
 std::ostream&	operator<<( std::ostream& out, Weapon const& weapon ) {
