@@ -1,4 +1,4 @@
-NAME = fixed2
+NAME = fixed0
 
 CC = clang++
 
@@ -6,7 +6,6 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 \
 
 SRC = main.cpp \
 	  Fixed.cpp \
-	  utils.cpp \
 
 OBJ = ${SRC:.cpp=.o}
 

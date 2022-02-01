@@ -3,6 +3,6 @@
 
 #include <iostream>
 
-void printBits( int raw );
+void    printBits( int raw );
 
 #endif

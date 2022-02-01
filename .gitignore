@@ -31,8 +31,10 @@
 *.out
 *.app
 
+# other
 tags
 *.DS_Store
+Session.vim
 
 # Binaries
 megaphone
@@ -43,8 +45,6 @@ string
 violence
 replace
 karen
+fixed0
 fixed1
 fixed2
-
-# neovim
-Session.vim

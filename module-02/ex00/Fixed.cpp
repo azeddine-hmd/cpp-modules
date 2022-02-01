@@ -11,15 +11,6 @@ Fixed::Fixed( Fixed const& copy ) {
 	*this = copy;
 }
 
-Fixed::Fixed( int const integer ): mRaw(0) {
-    mRaw = integer<<mFracWidth;
-}
-
-Fixed::Fixed( float const floatNumber ): mRaw(0) {
-    //TODO: implement
-    (void)floatNumber;
-}
-
 Fixed::~Fixed( void ) {
     std::cout << "Destructor called" << std::endl;
 }
@@ -29,13 +20,6 @@ Fixed&	Fixed::operator=( Fixed const& other ) {
     mRaw = other.getRawBits();
 
 	return *this;
-}
-
-std::ostream& operator<<(std::ostream& out, Fixed const& curr) {
-    std::cout << "raw bits: " << std::endl;
-    printBits(curr.getRawBits());
-
-    return out;
 }
 
 int Fixed::getFracWidth( void ) const {
@@ -49,9 +33,4 @@ int Fixed::getRawBits( void ) const {
 
 void Fixed::setRawBits(const int raw) {
     mRaw = raw;
-}
-
-int Fixed::toInt( void ) const {
-    //TODO: implement
-    return mRaw>>mFracWidth;
 }
