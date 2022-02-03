@@ -7,7 +7,10 @@
 
 class Fixed {
 	int					mRaw;
-	static const int	mFracWidth;
+	static const int	FRACTION;
+
+    int getRawFromFloat( float floatNbr );
+    int getRawFromInt( int intNbr );
 public:
 	Fixed( void );
 	Fixed( Fixed const& copy );
@@ -31,17 +34,21 @@ public:
     Fixed   operator/( Fixed const& rhs);
 
     Fixed   operator++( void );
+    Fixed   operator++( int );
     Fixed   operator--( void );
+    Fixed   operator--( int );
 
-    // getters and setters
-	void setRaw( int const raw );
-	int getRaw( void ) const ;
-	int getFracWidth( void ) const;
+    // member functions
+	int     getRawBits( void ) const;
+    void    setRawBits( int raw );
+    int     toInt( void ) const;
+    float   toFloat( void ) const;
 
-    // member function
-	int getRawBits( void ) const;
-    int toInt( void ) const;
-    float toFloat( void ) const;
+    // static functions
+    static Fixed&       min( Fixed& a, Fixed& b );
+    static Fixed const& min( Fixed const& a, Fixed const& b );
+    static Fixed&       max( Fixed& a, Fixed& b );
+    static Fixed const& max( Fixed const& a, Fixed const& b );
 };
 
 std::ostream& operator<<(std::ostream& out, Fixed const& obj);

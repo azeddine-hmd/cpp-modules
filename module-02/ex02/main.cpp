@@ -1,7 +1,19 @@
 #include <iostream>
+#include "Fixed.hpp"
 
 int main( void ) {
-    std::cout << "main reached" << std::endl;
+    Fixed       a;
+    Fixed const b( Fixed( 5.06f ) * Fixed( 2 ) );
+
+    std::cout << a << std::endl;
+    std::cout << ++a << std::endl;
+    std::cout << a << std::endl;
+    std::cout << a++ << std::endl;
+    std::cout << a << std::endl;
+
+    std::cout << b << std::endl;
+
+    std::cout << Fixed::max( a, b ) << std::endl;
 
     return 0;
 }
