@@ -9,16 +9,16 @@ class Fixed {
 	int					mRaw;
 	static const int	FRACTION;
 
-    int getRawFromFloat( float floatNbr );
-    int getRawFromInt( int intNbr );
 public:
 	Fixed( void );
 	Fixed( Fixed const& copy );
-    Fixed( int const intNbr );
-    Fixed( float const floatNbr );
 	~Fixed( void );
 
-    // operator overloading
+    // argument constructors
+    Fixed( int const intNbr );
+    Fixed( float const floatNbr );
+
+    // assignment operator
 	Fixed&	operator=( Fixed const& rhs );
 
     bool    operator>( Fixed const& rhs );
@@ -28,23 +28,25 @@ public:
     bool    operator!=( Fixed const& rhs );
     bool    operator==( Fixed const& rhs );
 
+    // arithmetic opertators
     Fixed&  operator+( Fixed const& rhs);
     Fixed&  operator-( Fixed const& rhs);
     Fixed&  operator*( Fixed const& rhs);
     Fixed&  operator/( Fixed const& rhs);
 
+    // Pre/Post increment/decrement operators
     Fixed&  operator++( void );
     Fixed  operator++( int );
     Fixed&  operator--( void );
     Fixed  operator--( int );
 
-    // member functions
+    // public member functions
 	int     getRawBits( void ) const;
     void    setRawBits( int raw );
     int     toInt( void ) const;
     float   toFloat( void ) const;
 
-    // static functions
+    // public static functions
     static Fixed&       min( Fixed& a, Fixed& b );
     static Fixed const& min( Fixed const& a, Fixed const& b );
     static Fixed&       max( Fixed& a, Fixed& b );

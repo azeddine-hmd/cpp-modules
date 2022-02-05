@@ -1,38 +1,40 @@
 #include "Fixed.hpp"
 
 /*
-*   Static variables
+*   static variables
 */
 
 const int Fixed::FRACTION = 8;
 
 /*
-*   Constructors
+*   constructor(default/copy) and destructor
 */
 
-Fixed::Fixed( void ): mRaw(0) {
-}
+Fixed::Fixed( void ): mRaw(0) {}
 
 Fixed::Fixed( Fixed const& copy ) {
-
 	*this = copy;
 }
 
+Fixed::~Fixed( void ) {}
+
+
+/*
+*   argument constructors
+*/
+
 Fixed::Fixed( int const intNbr ): mRaw(0) {
 
-    mRaw = getRawFromInt(intNbr);
+    mRaw = intNbr<<Fixed::FRACTION;
 }
 
 Fixed::Fixed( float const floatNbr ): mRaw(0) {
 
-    mRaw = getRawFromFloat(floatNbr);
-}
-
-Fixed::~Fixed( void ) {
+    mRaw = (int) roundf( floatNbr * (1<<Fixed::FRACTION) );
 }
 
 /*
-*   Operator overloading
+*   operator overloading
 */
 
 Fixed&	Fixed::operator=( Fixed const& rhs ) {
@@ -122,20 +124,9 @@ Fixed   Fixed::operator--( int ) {
 }
 
 /*
-*   private member function
+*   static functions
 */
 
-int Fixed::getRawFromFloat( float floatNbr ) {
-    return (int) roundf( floatNbr * (1<<Fixed::FRACTION) );
-}
-
-int Fixed::getRawFromInt( int intNbr ) {
-    return intNbr<<Fixed::FRACTION;
-}
-
-/*
-*   Static functions
-*/
 Fixed&          Fixed::min( Fixed& a, Fixed& b ) {
     if (a > b)
         return b;
@@ -161,7 +152,7 @@ Fixed const&    Fixed::max( Fixed const& a, Fixed const& b ) {
 }
 
 /*
-*   Public Member Functions
+*   public member functions
 */
 
 int Fixed::getRawBits( void ) const {
