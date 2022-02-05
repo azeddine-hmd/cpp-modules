@@ -28,15 +28,15 @@ public:
     bool    operator!=( Fixed const& rhs );
     bool    operator==( Fixed const& rhs );
 
-    Fixed   operator+( Fixed const& rhs);
-    Fixed   operator-( Fixed const& rhs);
-    Fixed   operator*( Fixed const& rhs);
-    Fixed   operator/( Fixed const& rhs);
+    Fixed&  operator+( Fixed const& rhs);
+    Fixed&  operator-( Fixed const& rhs);
+    Fixed&  operator*( Fixed const& rhs);
+    Fixed&  operator/( Fixed const& rhs);
 
-    Fixed   operator++( void );
-    Fixed   operator++( int );
-    Fixed   operator--( void );
-    Fixed   operator--( int );
+    Fixed&  operator++( void );
+    Fixed  operator++( int );
+    Fixed&  operator--( void );
+    Fixed  operator--( int );
 
     // member functions
 	int     getRawBits( void ) const;

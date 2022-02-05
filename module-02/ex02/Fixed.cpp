@@ -71,43 +71,51 @@ bool    Fixed::operator==( Fixed const& rhs ) {
     return ( mRaw == rhs.getRawBits() ) ? true : false;
 }
 
-Fixed   Fixed::operator+( Fixed const& rhs) {
-    return Fixed( mRaw + rhs.getRawBits() );
+Fixed&   Fixed::operator+( Fixed const& rhs) {
+    mRaw = mRaw + rhs.getRawBits();
+
+    return *this;
 }
 
-Fixed   Fixed::operator-( Fixed const& rhs) {
-    return Fixed( mRaw - rhs.getRawBits() );
+Fixed&   Fixed::operator-( Fixed const& rhs) {
+    mRaw = mRaw - rhs.getRawBits();
+
+    return *this;
 }
 
-Fixed  Fixed::operator*( Fixed const& rhs) {
+Fixed&  Fixed::operator*( Fixed const& rhs) {
     mRaw = ( (long)mRaw * (long)rhs.getRawBits() ) / (1<<Fixed::FRACTION);
 
     return *this;
 }
 
-Fixed   Fixed::operator/( Fixed const& rhs) {
+Fixed&   Fixed::operator/( Fixed const& rhs) {
     mRaw = ( (long)mRaw * (1<<Fixed::FRACTION) ) / rhs.getRawBits();
 
     return *this;
 }
 
-Fixed   Fixed::operator++( void ) {
-    return Fixed( mRaw++ );
+Fixed&   Fixed::operator++( void ) {
+    mRaw++;
+
+    return *this;
 }
 
 Fixed   Fixed::operator++( int ) {
-    Fixed   tmp(*this);
+    Fixed tmp(*this);
     operator++();
 
     return tmp;
 }
 
-Fixed   Fixed::operator--( void ) {
-    return Fixed( mRaw-- );
+Fixed&   Fixed::operator--( void ) {
+    mRaw--;
+
+    return *this;
 }
 
 Fixed   Fixed::operator--( int ) {
-    Fixed   tmp(*this);
+    Fixed tmp(*this);
     operator--();
 
     return tmp;
