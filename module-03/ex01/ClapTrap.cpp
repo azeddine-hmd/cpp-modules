@@ -1,19 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 18:49:53 by ahamdaou          #+#    #+#             */
-/*   Updated: 2022/02/09 18:49:53 by ahamdaou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap( void ) {}
+
 ClapTrap::ClapTrap( std::string name ): mName(name), mHitPoint(10), mEnergyPoint(10), mAttackDamage(0) {
-	std::cout << "Argument Constructor called!" << std::endl;
+	std::cout << "ClapTrap: argument constructor called!" << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const& copy ) {
@@ -21,11 +11,12 @@ ClapTrap::ClapTrap( ClapTrap const& copy ) {
 }
 
 ClapTrap::~ClapTrap( void ) {
-	std::cout << "Destructor called!" << std::endl;
+	std::cout << "ClapTrap: destructor called!" << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=( ClapTrap const& rhs ) {
 	mName = rhs.getName();
+	mHitPoint = rhs.getHitPoint();
 	mEnergyPoint = rhs.getEnergyPoint();
 	mAttackDamage = rhs.getAttackDamage();
 
@@ -71,8 +62,19 @@ void	ClapTrap::attack( std::string const& target ) {
 
 void	ClapTrap::takeDamage( unsigned int amount ) {
 	std::cout << "ClapTrap " << mName << " takes " << amount << " points of damage!" << std::endl;
+
+	if (mHitPoint - amount < 0)
+		mHitPoint = 0;
+	else
+		mHitPoint -= amount;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << "ClapTrap " << mName << " have repaired " << amount << " of hit points!" << std::endl;
+
+	if (mEnergyPoint != 0)
+	{
+		mEnergyPoint--;
+		mHitPoint += amount;
+	}
 }

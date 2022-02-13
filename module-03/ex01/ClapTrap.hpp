@@ -16,12 +16,13 @@
 #include <iostream>
 
 class ClapTrap {
+protected:
     std::string mName;
     unsigned    mHitPoint;
     unsigned    mEnergyPoint;
     unsigned    mAttackDamage;
 
-    ClapTrap( void );
+	ClapTrap( void );
 public:
     ClapTrap( std::string name );
     ClapTrap( ClapTrap const& copy );
