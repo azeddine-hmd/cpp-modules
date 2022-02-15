@@ -1,10 +1,22 @@
 #include <iostream>
 #include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-int		main( void ) {
-	Animal a;
+int main()
+{
+	Animal const		*animal = new Animal();
+	Animal const		*dog = new Dog();
+	Animal const		*cat = new Cat();
 
-	a.makeSound();
+	std::cout << cat->getType() << " " << std::endl;
+	std::cout << dog->getType() << " " << std::endl;
 
-	return 0;
+	dog->makeSound();
+	cat->makeSound();
+	animal->makeSound();
+
+	delete animal;
+	delete cat;
+	delete dog;
 }

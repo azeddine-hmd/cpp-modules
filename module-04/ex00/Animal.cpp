@@ -26,6 +26,6 @@ void	Animal::setType( std::string const& type ) {
 	mType = type;
 }
 
-void	Animal::makeSound( void ) {
+void	Animal::makeSound( void ) const {
 	std::cout << "the " << mType << " sound!" << std::endl;
 }

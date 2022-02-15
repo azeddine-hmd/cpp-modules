@@ -4,11 +4,10 @@
 #include "Animal.hpp"
 
 class Dog : virtual public Animal {
+public:
+	Dog( void );
+	~Dog( void );
+	Dog( Dog const & b );
 
-	public:
-		Dog();
-		Dog( Dog const & b );
-		~Dog();
-
-		Dog	&operator=( Dog const & b );
+	Dog&	operator=( Dog const& rhs );
 };
