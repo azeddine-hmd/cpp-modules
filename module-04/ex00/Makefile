@@ -5,6 +5,9 @@ CC = clang++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
+	  WrongDog.cpp \
+	  WrongCat.cpp \
+	  WrongAnimal.cpp \
 	  Cat.cpp \
 	  Dog.cpp \
 	  Animal.cpp

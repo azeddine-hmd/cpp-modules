@@ -10,4 +10,6 @@ public:
 	Cat( Cat const& copy );
 
 	Cat&	operator=( Cat const& rhs );
+
+	void	makeSound( void ) const;
 };

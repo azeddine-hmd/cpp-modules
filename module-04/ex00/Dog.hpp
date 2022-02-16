@@ -10,4 +10,6 @@ public:
 	Dog( Dog const & b );
 
 	Dog&	operator=( Dog const& rhs );
+
+	void	makeSound( void ) const;
 };

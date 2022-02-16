@@ -18,3 +18,7 @@ Dog&	Dog::operator=(const Dog &rhs) {
 
 	return *this;
 }
+
+void	Dog::makeSound( void ) const {
+	std::cout << "the dog sound!" << std::endl;
+}
