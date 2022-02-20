@@ -1,12 +1,12 @@
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
 #define SIZE 4
 int main( void )
 {
-	Animal* animals[SIZE];
+	AAnimal* animals[SIZE];
 
 	// creation
 	for (int i = 0; i < SIZE; i++) {

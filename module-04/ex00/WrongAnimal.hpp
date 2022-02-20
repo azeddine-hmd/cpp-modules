@@ -7,7 +7,7 @@ protected:
 	std::string	mType;
 public:
 	WrongAnimal( void );
-	~WrongAnimal( void );
+	virtual ~WrongAnimal( void );
 	WrongAnimal( WrongAnimal const& copy );
 
 	WrongAnimal&	operator=( WrongAnimal const& rhs );
