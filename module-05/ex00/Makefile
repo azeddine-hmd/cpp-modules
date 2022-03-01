@@ -6,7 +6,8 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 LEAKS_FLAGS = $(CFLAGS) -g -fsanitize=leak
 
-SRC = main.cpp
+SRC = main.cpp \
+	  Bureaucrat.cpp \
 
 OBJ = ${SRC:.cpp=.o}
 

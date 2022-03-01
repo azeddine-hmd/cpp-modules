@@ -17,6 +17,24 @@ public:
 	std::string const&	getName( void ) const;
 	int					getGrade( void ) const;
 	void				setGrade( int grade );
+
+	void				incGrade( void );
+	void				decGrade( void );
+
+	class GradeTooHighException : public std::exception {
+	public:
+		virtual char const*	what() const throw() {
+			return "GradeTooHighException: grade is too high";
+		}
+	};
+
+	class GradeTooLowException : public std::exception {
+	public:
+		virtual char const*	what() const throw() {
+			return "GradeTooLowException: grade is too low";
+		}
+	};
+
 };
 
 std::ostream&	operator<<( std::ostream& out, Bureaucrat const& obj );
