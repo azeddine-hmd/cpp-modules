@@ -1,4 +1,4 @@
-NAME = abstract
+NAME = form
 
 CC = c++
 
@@ -7,10 +7,8 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LEAKS_FLAGS = $(CFLAGS) -g -fsanitize=leak
 
 SRC = main.cpp \
-	  Brain.cpp \
-	  Cat.cpp \
-	  Dog.cpp \
-	  AAnimal.cpp
+	  Form.cpp\
+	  Bureaucrat.cpp \
 
 OBJ = ${SRC:.cpp=.o}
 

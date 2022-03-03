@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+class Form;
+
 class Bureaucrat {
 	std::string const 	mName;
 	int					mGrade;
@@ -20,6 +22,8 @@ public:
 
 	void				incGrade( void );
 	void				decGrade( void );
+
+	void				signForm( Form const& form ) const;
 
 	class GradeTooHighException : public std::exception {
 	public:
