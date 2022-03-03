@@ -3,28 +3,26 @@
 #include "Form.hpp"
 
 int		main( void ) {
-	// Test: case which bureaucrat being able to sign the form
 	try
 	{
-		Bureaucrat	mayor("Vitali", 1); // Note: vitali is the mayor of kyiv
+		Bureaucrat	mayor("Vitali", 1);
 		Form		surrenderForm("Surrender Form", 5, 5);
 
-		mayor.signForm(surrenderForm);
+		surrenderForm.beSigned(mayor);
 	}
-	catch(std::exception& e)
+	catch (std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
-	// Test: case which bureaucrat not being able to sign the form
 	try
 	{
-		Bureaucrat	primeMinister("Aziz Akhannouch", 4);
+		Bureaucrat	primeMinister("Aziz Akhannouch", 1);
 		Form		truce("Westren Sahara Truce", 1, 1);
 
-		primeMinister.signForm(truce);
+		truce.beSigned(primeMinister);
 	}
-	catch(std::exception& e)
+	catch (std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
 	}

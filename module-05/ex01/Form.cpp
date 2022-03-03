@@ -39,11 +39,11 @@ int Form::getExecutionGrade( void ) const {
 }
 
 void	Form::beSigned( Bureaucrat const& signatory ) {
-	if (signatory.getGrade() <= mSignatureGrade) {
+	if (signatory.getGrade() <= mSignatureGrade)
 		mIsSigned = true;
-	} else {
+	signatory.signForm(*this);
+	if (!mIsSigned)
 		throw GradeTooLowException();
-	}
 }
 
 char const*	Form::GradeTooHighException::what( void ) const throw() {

@@ -7,7 +7,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LEAKS_FLAGS = $(CFLAGS) -g -fsanitize=leak
 
 SRC = main.cpp \
-	  Form.cpp\
+	  PresidentialPardonForm.cpp \
+	  RobotomyRequestForm.cpp \
+	  ShrubberyCreationForm.cpp \
+	  AForm.cpp\
 	  Bureaucrat.cpp \
 
 OBJ = ${SRC:.cpp=.o}
