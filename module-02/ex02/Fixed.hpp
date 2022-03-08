@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 18:55:29 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/08 18:55:29 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
@@ -29,10 +41,10 @@ public:
     bool    operator==( Fixed const& rhs );
 
     // arithmetic opertators
-    Fixed&  operator+( Fixed const& rhs);
-    Fixed&  operator-( Fixed const& rhs);
-    Fixed&  operator*( Fixed const& rhs);
-    Fixed&  operator/( Fixed const& rhs);
+    Fixed& 	operator+( Fixed const& rhs);
+    Fixed& 	operator-( Fixed const& rhs);
+    Fixed& 	operator*( Fixed const& rhs);
+    Fixed& 	operator/( Fixed const& rhs);
 
     // Pre/Post increment/decrement operators
     Fixed&  operator++( void );
@@ -45,6 +57,7 @@ public:
     void    setRawBits( int raw );
     int     toInt( void ) const;
     float   toFloat( void ) const;
+	int		getFraction( void ) const;
 
     // public static functions
     static Fixed&       min( Fixed& a, Fixed& b );
@@ -53,6 +66,6 @@ public:
     static Fixed const& max( Fixed const& a, Fixed const& b );
 };
 
-std::ostream& operator<<(std::ostream& out, Fixed const& obj);
+std::ostream&	operator<<(std::ostream& out, Fixed const& obj);
 
 #endif

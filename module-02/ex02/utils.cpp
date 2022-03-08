@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 18:55:36 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/08 18:55:36 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.hpp"
 
 void printBits( int raw ) {
@@ -11,4 +23,9 @@ void printBits( int raw ) {
         raw = raw<<1;
     }
     std::cout << std::endl;
+}
+
+void printBitsf( float raw ) {
+	int* result = reinterpret_cast<int*>(&raw);
+	printBits(*result);
 }

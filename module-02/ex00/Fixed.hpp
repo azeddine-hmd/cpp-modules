@@ -11,6 +11,7 @@ public:
 	Fixed( Fixed const& copy );
 	~Fixed( void );
 	Fixed&	operator=( Fixed const& other );
+
 	int getFracWidth( void ) const;
 	int getRawBits( void ) const;
 	void setRawBits( int const raw);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 18:55:27 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/08 18:55:27 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 /*
@@ -24,12 +36,10 @@ Fixed::~Fixed( void ) {}
 */
 
 Fixed::Fixed( int const intNbr ): mRaw(0) {
-
     mRaw = intNbr<<Fixed::FRACTION;
 }
 
 Fixed::Fixed( float const floatNbr ): mRaw(0) {
-
     mRaw = (int) roundf( floatNbr * (1<<Fixed::FRACTION) );
 }
 
@@ -169,4 +179,8 @@ int Fixed::toInt( void ) const {
 
 float Fixed::toFloat( void ) const {
     return (float)mRaw / (float)(1<<Fixed::FRACTION);
+}
+
+int		Fixed::getFraction( void ) const {
+	return Fixed::FRACTION;
 }
