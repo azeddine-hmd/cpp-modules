@@ -13,21 +13,14 @@
 #include <iostream>
 #include <fstream>
 
-char	charToUpper(char c) {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
-}
-
-char    *strToUpper(char *s)
+std::string strToUpper(std::string const& s)
 {
 	int	i;
+	std::string upper(s);
 
-	if (!s)
-		return (NULL);
 	i = -1;
 	while (s[++i])
-		s[i] = charToUpper(s[i]);
+		upper[i] = (char)std::toupper(s[i]);
 	return (s);
 }
 

@@ -4,6 +4,8 @@ CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98 \
 
+LEAKS_FLAGS = $(CFLAGS) -g -fsanitize=leak
+
 SRC = main.cpp \
 
 OBJ = ${SRC:.cpp=.o}
@@ -21,4 +23,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re
+debug:
+	@$(CC) $(LEAKS_FLAGS) $(SRC) -o $(NAME)
+	@./$(NAME) ; make fclean
+
+run: re
+	@./$(NAME) ; make fclean
+
+.PHONY: clean fclean re debug run
