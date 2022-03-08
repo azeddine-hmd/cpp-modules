@@ -5,7 +5,6 @@ Form::Form( std::string const& name, int signatureGrade, int executionGrade )
 {
 	std::cout << "Form: argument constructor called" << std::endl;
 }
-
 Form::Form( Form const& copy )
 	: mName(copy.getName()), mSignatureGrade(copy.getSignatureGrade()), mExecutionGrade(copy.getExecutionGrade())
 {
@@ -47,9 +46,9 @@ void	Form::beSigned( Bureaucrat const& signatory ) {
 }
 
 char const*	Form::GradeTooHighException::what( void ) const throw() {
-	return "Form::GradeTooHighException: grade is too high";
+	return "Form: grade is too high";
 }
 
 char const*	Form::GradeTooLowException::what( void ) const throw() {
-	return "Form::GradeTooLowException: grade is too low";
+	return "Form: grade is too low";
 }

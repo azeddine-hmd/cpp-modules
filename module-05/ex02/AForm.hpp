@@ -36,7 +36,7 @@ public:
 		char const*	what( void ) const throw();
 	};
 
-	class NotSigned : public std::exception {
+	class UnsignedFormException : public std::exception {
 		char const*	what( void ) const throw();
 	};
 };

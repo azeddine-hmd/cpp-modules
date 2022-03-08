@@ -31,3 +31,5 @@ debug:
 
 run: re
 	@./$(NAME) ; make fclean
+
+.PHONY: clean fclean re debug run
