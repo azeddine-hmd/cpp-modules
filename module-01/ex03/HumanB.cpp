@@ -12,7 +12,7 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB( void ): mWeapon(NULL) {}
+HumanB::HumanB( void ): mWeapon(nullptr) {}
 
 HumanB::HumanB( std::string const& name ): mName(name) {}
 

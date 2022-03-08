@@ -13,11 +13,13 @@
 #include "Zombie.hpp"
 
 int	main(void) {
+
 	Zombie* zombie = newZombie(std::string("azeddine"));
 	zombie->announce();
 	delete zombie;
-	randomChump(std::string("zomboo"));
-	randomChump(std::string("walking dead"));
+
+	randomChump("undead");
+	randomChump("walking dead");
 
 	return 0;
 }

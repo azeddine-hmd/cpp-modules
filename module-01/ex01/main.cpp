@@ -14,7 +14,7 @@
 
 int	main( void ) {
 	int N = 10;
-	Zombie* bunchOfZombies = zombieHorde(N, std::string("chunky zombie"));
+	Zombie* bunchOfZombies = zombieHorde(N, "chunky zombie");
 	for (int i = 0; i < N; i++) {
 		bunchOfZombies[N].announce();
 	}

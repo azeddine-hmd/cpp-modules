@@ -16,7 +16,7 @@
 #include "Weapon.hpp"
 
 class HumanA {
-	Weapon*		mWeapon;
+	Weapon&		mWeapon;
 	std::string	mName;
 
 	HumanA( void );

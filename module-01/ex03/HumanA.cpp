@@ -12,21 +12,19 @@
 
 #include "HumanA.hpp"
 
-HumanA::HumanA( void ) {}
-
-HumanA::HumanA( Weapon& weapon ): mWeapon(&weapon) {}
+HumanA::HumanA( Weapon& weapon ): mWeapon(weapon) {}
 
 HumanA::HumanA( std::string const& name, Weapon& weapon )
-	: mWeapon(&weapon), mName(name) {}
+	: mWeapon(weapon), mName(name) {}
 
 HumanA::~HumanA( void ) {}
 
 Weapon const&	HumanA::getWeapon( void ) const {
-	return *mWeapon;
+	return mWeapon;
 }
 
 void	HumanA::setWeapon( Weapon& weapon ) {
-	mWeapon = &weapon;
+	mWeapon = weapon;
 }
 
 std::string const&	HumanA::getName( void ) const {
@@ -38,5 +36,5 @@ void	HumanA::setName( std::string& name ) {
 }
 
 void	HumanA::attack( void ) const {
-	std::cout << mName << " attacks with his " << *mWeapon << std::endl;
+	std::cout << mName << " attacks with his " << mWeapon << std::endl;
 }

@@ -2,8 +2,7 @@ NAME = karen
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror \
-		 -std=c++98 \
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
 	  Karen.cpp \
@@ -13,7 +12,7 @@ OBJ = ${SRC:.cpp=.o}
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ)

@@ -2,11 +2,10 @@ NAME = zombie
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror \
-		 -std=c++98 \
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
-	  Zombie.cpp \
+	  Zombie.cpp
 
 OBJ = ${SRC:.cpp=.o}
 

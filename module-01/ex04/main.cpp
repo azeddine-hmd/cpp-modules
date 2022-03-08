@@ -15,13 +15,13 @@
 
 std::string strToUpper(std::string const& s)
 {
-	int	i;
 	std::string upper(s);
 
-	i = -1;
-	while (s[++i])
-		upper[i] = (char)std::toupper(s[i]);
-	return (s);
+	for (std::size_t i = 0; s[i]; i++) {
+		upper[i] = std::toupper(s[i]);
+	}
+
+	return upper;
 }
 
 void	replace(std::string& input, std::string const& s1, std::string const& s2, std::ofstream& ofs)
@@ -42,7 +42,7 @@ int		main(int argc, char **argv) {
 	if (argc != 4)
 	{
 		std::cerr << "Error: expect three argumment" << std::endl;
-		return (1);
+		return 1;
 	}
 
 	std::string filename = std::string(argv[1]);
@@ -51,14 +51,18 @@ int		main(int argc, char **argv) {
 
 	std::ifstream	ifs(argv[1]);
 	if (ifs.fail()) {
-		std::cerr << "Error: failed to read from '" + filename << "'" << std::endl;
-		return (1);
+		std::cerr << "Error: failed to read from '" + filename << "`" << std::endl;
+		return 1;
+	} else if ( ifs.peek() == std::ifstream::traits_type::eof() ) {
+		std::cerr << "Error: file `" << filename << "` is empty!" << std::endl;
+		return 1;
 	}
 
-	std::ofstream	ofs(std::string(strToUpper(argv[1])) + ".replace");
+	std::string		targetFilename(strToUpper(argv[1]) + ".replace");
+	std::ofstream	ofs(targetFilename);
 	if(ofs.fail()) {
-		std::cerr << "Error: failed to write into '" + filename << "'" << std::endl;
-		return (1);
+		std::cerr << "Error: failed to write into `" + targetFilename << "`" << std::endl;
+		return 1;
 	}
 
 	std::string input;
