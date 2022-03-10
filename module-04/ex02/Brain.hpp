@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 15:29:13 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 15:29:13 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -8,8 +20,6 @@ public:
 	Brain( void );
 	virtual ~Brain( void );
 	Brain( Brain const& copy );
-
 	Brain&				operator=( Brain const& rhs );
-
 	std::string const*	getIdeas( void ) const;
 };

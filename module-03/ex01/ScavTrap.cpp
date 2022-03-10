@@ -1,4 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 20:53:20 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/08 20:53:20 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap( void ): ClapTrap("claptrap") {
+	std::cout << "ScavTrap: default constructor called!" << std::endl;
+
+	mHitPoint = 100;
+	mEnergyPoint = 50;
+	mAttackDamage = 20;
+}
 
 ScavTrap::ScavTrap( std::string const& name): ClapTrap(name) {
 	std::cout << "ScavTrap: argument constructor called!" << std::endl;

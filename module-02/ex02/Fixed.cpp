@@ -41,6 +41,10 @@ Fixed::Fixed( int const intNbr ): mRaw(0) {
 
 Fixed::Fixed( float const floatNbr ): mRaw(0) {
     mRaw = (int) roundf( floatNbr * (1<<Fixed::FRACTION) );
+
+
+	printBitsf(floatNbr);
+	printBitsf(floatNbr * (1<<Fixed::FRACTION));
 }
 
 /*

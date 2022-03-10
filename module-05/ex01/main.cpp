@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 18:45:22 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 18:45:22 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
@@ -17,7 +29,7 @@ int		main( void ) {
 
 	try
 	{
-		Bureaucrat	primeMinister("Aziz Akhannouch", 1);
+		Bureaucrat	primeMinister("Aziz Akhannouch", 100);
 		Form		truce("Westren Sahara Truce", 1, 1);
 
 		truce.beSigned(primeMinister);

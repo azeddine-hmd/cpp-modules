@@ -1,7 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 18:48:27 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 18:48:27 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PresidentialPardonForm.hpp"
 
+PresidentialPardonForm::PresidentialPardonForm( void ): AForm() {
+}
+
 PresidentialPardonForm::PresidentialPardonForm( std::string const& target ): AForm(target, 25, 5) {
-	std::cout << "PresidentialPardonForm: constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const& copy ): AForm(copy.getName(), copy.getSignatureGrade(), copy.getExecutionGrade()) {
@@ -9,7 +23,6 @@ PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const& co
 }
 
 PresidentialPardonForm::~PresidentialPardonForm( void ) {
-	std::cout << "PresidentialPardonForm: destructor called" << std::endl;
 }
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=( PresidentialPardonForm const& rhs ) {
@@ -19,5 +32,6 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=( PresidentialPardonFor
 }
 
 void	PresidentialPardonForm::execute( Bureaucrat const& executer ) const {
-	//TODO: implement
+	AForm::execute(executer);
+	std::cout << AForm::getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }

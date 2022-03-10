@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 15:27:07 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 15:27:07 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Dog.hpp"
 
 Dog::Dog( void ) {
 	std::cout << "Dog: default constructor called!" << std::endl;
-
 	mType = "Dog";
 	mBrain = new Brain();
 }
 
 Dog::~Dog( void ) {
 	std::cout << "Dog: destructor called!" << std::endl;
-
 	delete mBrain;
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 20:49:54 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 20:49:54 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -5,6 +17,8 @@
 #include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm {
+	static std::string const trees[3];
+
 	ShrubberyCreationForm( void );
 public:
 	ShrubberyCreationForm( std::string const& target );

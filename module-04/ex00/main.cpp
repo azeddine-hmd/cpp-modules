@@ -13,8 +13,8 @@ int main()
 	Animal const		*cat = new Cat();
 
 
-	std::cout << cat->getType() << " " << std::endl;
-	std::cout << dog->getType() << " " << std::endl;
+	std::cout << "type: " << cat->getType() << std::endl;
+	std::cout << "type: " << dog->getType() << std::endl;
 
 	dog->makeSound();
 	cat->makeSound();
@@ -28,8 +28,8 @@ int main()
 	WrongAnimal const	*wrongCat = new WrongCat();
 	WrongAnimal const	*wrongDog = new WrongDog();
 
-	std::cout << wrongCat->getType() << " " << std::endl;
-	std::cout << wrongDog->getType() << " " << std::endl;
+	std::cout << "type: " << wrongCat->getType() << std::endl;
+	std::cout << "type: " << wrongDog->getType() << std::endl;
 
 	wrongDog->makeSound();
 	wrongCat->makeSound();

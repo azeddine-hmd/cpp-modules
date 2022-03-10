@@ -13,7 +13,7 @@ OBJ = ${SRC:.cpp=.o}
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:

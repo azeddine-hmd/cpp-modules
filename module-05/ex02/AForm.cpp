@@ -1,9 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 18:46:19 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 18:46:19 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AForm.hpp"
+
+AForm::AForm( void )
+	: mName(""), mIsSigned(false), mSignatureGrade(-1), mExecutionGrade(-1)
+{
+}
 
 AForm::AForm( std::string const& name, int signatureGrade, int executionGrade )
 	: mName(name), mIsSigned(false), mSignatureGrade(signatureGrade), mExecutionGrade(executionGrade)
 {
-	std::cout << "AForm: argument constructor called" << std::endl;
 }
 
 AForm::AForm( AForm const& copy )
@@ -13,7 +29,6 @@ AForm::AForm( AForm const& copy )
 }
 
 AForm::~AForm( void ) {
-	std::cout << "AForm: destructor called" << std::endl;
 }
 
 AForm&	AForm::operator=( AForm const& rhs) {
@@ -49,6 +64,11 @@ void	AForm::beSigned( Bureaucrat const& signatory ) {
 }
 
 void	AForm::execute( Bureaucrat const& executer ) const {
+	if (!getIsSigned()) {
+		throw AForm::UnsignedFormException();
+	} else if ( getSignatureGrade() < executer.getGrade() ) {
+		throw AForm::GradeTooLowException();
+	}
 }
 
 

@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 20:46:21 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 20:46:21 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Form.hpp"
 
 Form::Form( std::string const& name, int signatureGrade, int executionGrade )
 	: mName(name), mIsSigned(false), mSignatureGrade(signatureGrade), mExecutionGrade(executionGrade)
 {
-	std::cout << "Form: argument constructor called" << std::endl;
 }
 Form::Form( Form const& copy )
 	: mName(copy.getName()), mSignatureGrade(copy.getSignatureGrade()), mExecutionGrade(copy.getExecutionGrade())
@@ -12,7 +23,6 @@ Form::Form( Form const& copy )
 }
 
 Form::~Form( void ) {
-	std::cout << "Form: destructor called" << std::endl;
 }
 
 Form&	Form::operator=( Form const& rhs) {

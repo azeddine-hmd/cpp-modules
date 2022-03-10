@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/09 20:46:11 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/09 20:46:11 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 Bureaucrat::Bureaucrat( void ) {}
 
 Bureaucrat::Bureaucrat( std::string const& name, int grade ): mName(name), mGrade(grade) {
-	std::cout << "Bureaucrat: argument constructor called" << std::endl;
 	if (mGrade < 1)
 		throw GradeTooHighException();
 	else if (mGrade > 150)
@@ -16,7 +27,6 @@ Bureaucrat::Bureaucrat( Bureaucrat const& copy ): mName(copy.getName()) {
 }
 
 Bureaucrat::~Bureaucrat( void ) {
-	std::cout << "Bureaucrat: deconstructor called" << std::endl;
 }
 
 Bureaucrat&		Bureaucrat::operator=( Bureaucrat const& rhs ) {

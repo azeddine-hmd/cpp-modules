@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 20:52:46 by ahamdaou          #+#    #+#             */
+/*   Updated: 2022/03/08 20:52:46 by ahamdaou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) {}
+ClapTrap::ClapTrap( void ): mName("clapTrap"), mHitPoint(10), mEnergyPoint(10), mAttackDamage(0) {
+	std::cout << "ClapTrap: default constructor called!" << std::endl;
+}
 
 ClapTrap::ClapTrap( std::string name ): mName(name), mHitPoint(10), mEnergyPoint(10), mAttackDamage(0) {
 	std::cout << "ClapTrap: argument constructor called!" << std::endl;

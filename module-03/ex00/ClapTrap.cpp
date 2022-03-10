@@ -12,6 +12,10 @@
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap( void ): mName("claptrap"), mHitPoint(10), mEnergyPoint(10), mAttackDamage(0) {
+	std::cout << "ClapTrap: default constructor called!" << std::endl;
+}
+
 ClapTrap::ClapTrap( std::string name ): mName(name), mHitPoint(10), mEnergyPoint(10), mAttackDamage(0) {
 	std::cout << "Argument Constructor called!" << std::endl;
 }
