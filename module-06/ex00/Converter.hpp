@@ -4,6 +4,8 @@
 #include <string>
 #include <sstream>
 #include <limits>
+#include <cstdlib>
+#include <cmath>
 #include "ScalarValues.hpp"
 
 class Converter {
@@ -18,9 +20,13 @@ class Converter {
 	std::string     mValue;
     Type		    mType;
     ScalarValues    mScalarValues;
-    int			    mStatus[4];
+    bool			mImpossible[5];
+private:
+    bool            mIsCharDisplayable;
 
     Converter();
+
+    void convert();
 
 	void parse();
 
@@ -33,6 +39,10 @@ class Converter {
     void fromFloat();
 
     void fromDouble();
+
+    bool isNumber(float value) const;
+
+    bool isNumber(double value ) const;
 
 public:
 
@@ -57,6 +67,18 @@ public:
     void setScalarValues(ScalarValues const &scalarValues);
 
     ScalarValues const &getValues() const;
+
+    bool const *getImpossible() const;
+
+    bool isCharDisplayable() const;
+
+    void printChar(std::ostream &out) const;
+
+    void printInt(std::ostream &out) const;
+
+    void printFloat(std::ostream &out) const;
+
+    void printDouble(std::ostream &out) const;
 };
 
 std::ostream&	operator<<( std::ostream& out, Converter const& obj );

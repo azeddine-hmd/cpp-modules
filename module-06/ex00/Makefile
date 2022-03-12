@@ -16,10 +16,10 @@ $(NAME): $(SRC)
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJ)
+	@rm $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME) $(NAME).dSYM
+	@rm $(NAME) $(NAME).dSYM
 
 re: fclean all
 
