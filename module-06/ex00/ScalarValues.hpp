@@ -3,19 +3,19 @@
 #include <iostream>
 #include <sstream>
 
-class Values {
+class ScalarValues {
     char mCharValue;
     int mIntValue;
     float mFloatValue;
     double mDoubleValue;
 public:
-    Values();
+    ScalarValues();
 
-    ~Values();
+    ~ScalarValues();
 
-    Values( Values const& copy );
+    ScalarValues(ScalarValues const& copy );
 
-    Values& operator=( Values const& rhs );
+    ScalarValues& operator=(ScalarValues const& rhs );
 
     char getCharValue() const;
 
@@ -34,4 +34,4 @@ public:
     void setDoubleValue(double doubleValue);
 };
 
-std::ostream &operator<<(std::ostream &out, Values &obj);
+std::ostream &operator<<(std::ostream &out, ScalarValues const &obj);

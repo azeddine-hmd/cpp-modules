@@ -1,14 +1,14 @@
-#include "Values.hpp"
+#include "ScalarValues.hpp"
 
-Values::Values() {}
+ScalarValues::ScalarValues() : mCharValue(0), mIntValue(0), mFloatValue(0), mDoubleValue(0) {}
 
-Values::~Values()  {}
+ScalarValues::~ScalarValues()  {}
 
-Values::Values(Values const &copy) {
+ScalarValues::ScalarValues(ScalarValues const &copy) {
     *this = copy;
 }
 
-Values &Values::operator=(Values const &rhs) {
+ScalarValues &ScalarValues::operator=(ScalarValues const &rhs) {
     mCharValue = rhs.getCharValue();
     mIntValue = rhs.getIntValue();
     mFloatValue = rhs.getFloatValue();
@@ -17,7 +17,7 @@ Values &Values::operator=(Values const &rhs) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &out, Values &obj) {
+std::ostream &operator<<(std::ostream &out, ScalarValues const &obj) {
     std::cout \
     << "CharValue: " << obj.getCharValue() << std::endl \
     << "IntValue: " << obj.getIntValue() << std::endl \
@@ -27,34 +27,34 @@ std::ostream &operator<<(std::ostream &out, Values &obj) {
     return out;
 }
 
-char Values::getCharValue() const {
+char ScalarValues::getCharValue() const {
     return mCharValue;
 }
 
-void Values::setCharValue(char charValue) {
+void ScalarValues::setCharValue(char charValue) {
     mCharValue = charValue;
 }
 
-int Values::getIntValue() const {
+int ScalarValues::getIntValue() const {
     return mIntValue;
 }
 
-void Values::setIntValue(int intValue) {
+void ScalarValues::setIntValue(int intValue) {
     mIntValue = intValue;
 }
 
-float Values::getFloatValue() const {
+float ScalarValues::getFloatValue() const {
     return mFloatValue;
 }
 
-void Values::setFloatValue(float floatValue) {
+void ScalarValues::setFloatValue(float floatValue) {
     mFloatValue = floatValue;
 }
 
-double Values::getDoubleValue() const {
+double ScalarValues::getDoubleValue() const {
     return mDoubleValue;
 }
 
-void Values::setDoubleValue(double doubleValue) {
+void ScalarValues::setDoubleValue(double doubleValue) {
     mDoubleValue = doubleValue;
 }

@@ -6,6 +6,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = main.cpp \
 	  Converter.cpp \
+	  ScalarValues.cpp \
 
 OBJ = ${SRC:.cpp=.o}
 
