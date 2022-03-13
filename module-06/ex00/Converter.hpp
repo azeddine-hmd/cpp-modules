@@ -6,6 +6,7 @@
 #include <limits>
 #include <cstdlib>
 #include <cmath>
+#include <iomanip>
 #include "ScalarValues.hpp"
 
 class Converter {
@@ -42,7 +43,7 @@ private:
 
     bool isNumber(float value) const;
 
-    bool isNumber(double value ) const;
+    bool isNumber(double value) const;
 
 public:
 

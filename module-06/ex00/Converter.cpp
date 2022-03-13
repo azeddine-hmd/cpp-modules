@@ -26,6 +26,10 @@ Converter   &Converter::operator=(Converter const &rhs) {
 }
 
 std::ostream&   operator<<( std::ostream& out, Converter const& obj ) {
+    obj.printChar(out);
+    obj.printInt(out);
+    obj.printFloat(out);
+    obj.printDouble(out);
 
 	return out;
 }
@@ -131,11 +135,23 @@ void    Converter::parse() {
             mType = InvalidType;
         }
     } else if (mType == InvalidType) {
-        if (mValue == "inff" || mValue == "+inff" || mValue == "-inff" || mValue == "nanf") {
-            mScalarValues.setFloatValue(atof(mValue.c_str()));
+        if (mValue == "inff" || mValue == "+inff") {
+            mScalarValues.setFloatValue(std::numeric_limits<float>::infinity());
             mType = FloatType;
-        } else if (mValue == "inf" || mValue == "+inf" || mValue == "-inf" || mValue == "nan") {
-            mScalarValues.setDoubleValue(atof(mValue.c_str()));
+        } else if (mValue == "-inff") {
+            mScalarValues.setFloatValue(-std::numeric_limits<float>::infinity());
+            mType = FloatType;
+        } else if (mValue == "nanf") {
+            mScalarValues.setFloatValue(NAN);
+            mType = FloatType;
+        } else if (mValue == "inf" || mValue == "+inf") {
+            mScalarValues.setDoubleValue(std::numeric_limits<float>::infinity());
+            mType = DoubleType;
+        } else if (mValue == "-inf") {
+            mScalarValues.setDoubleValue(-std::numeric_limits<float>::infinity());
+            mType = DoubleType;
+        } else if (mValue == "nan") {
+            mScalarValues.setDoubleValue(NAN);
             mType = DoubleType;
         }
     }
@@ -155,6 +171,8 @@ void Converter::convertTypes() {
             break;
         case DoubleType:
             fromDouble();
+            break;
+        case InvalidType:
             break;
     }
 }
@@ -212,7 +230,7 @@ void Converter::fromDouble() {
     double value = mScalarValues.getDoubleValue();
     mScalarValues.setCharValue( static_cast<char>(value) );
     mScalarValues.setIntValue( static_cast<int>(value) );
-    mScalarValues.setDoubleValue( static_cast<double>(value) );
+    mScalarValues.setFloatValue( static_cast<float>(value) );
 
     if (!isNumber(value)
         || value > std::numeric_limits<char>::max()
@@ -230,25 +248,25 @@ void Converter::fromDouble() {
         mImpossible[IntType] = true;
     }
 
-    if (value > std::numeric_limits<float>::max()
-        || value < std::numeric_limits<float>::min()
+    if (value > static_cast<double>( std::numeric_limits<float>::max() )
+        || value < static_cast<double>( -std::numeric_limits<float>::max() )
     ) {
-        mImpossible[DoubleType] = true;
+        mImpossible[FloatType] = true;
     }
 }
 
-bool Converter::isNumber(float value) {
+bool Converter::isNumber(float value) const {
     return (!(std::isnan(value) || std::isinf(value)));
 }
 
-bool Converter::isNumber(double value) {
+bool Converter::isNumber(double value) const {
     return (!(std::isnan(value) || std::isinf(value)));
 }
 
 void Converter::printChar(std::ostream &out) const {
     if (mImpossible[InvalidType] || mImpossible[CharType]) {
         out << "char: impossible" << std::endl;
-    } else if (mIsCharDisplayable) {
+    } else if (!mIsCharDisplayable) {
         out << "char: Non displayable" << std::endl;
     } else {
         out << "char: '" << mScalarValues.getCharValue() << "'" << std::endl;
@@ -264,21 +282,25 @@ void Converter::printInt(std::ostream &out) const {
 }
 
 void Converter::printFloat(std::ostream &out) const {
+    float fraction = std::modf(mScalarValues.getFloatValue(), NULL);
+
     if (mImpossible[InvalidType] || mImpossible[FloatType]) {
         out << "float: impossible" << std::endl;
-    } else if (isNumber(mScalarValues.getFloatValue())) {
+    } else if (isNumber(mScalarValues.getFloatValue()) &&  fraction == 0.0f) {
+        out << "float: " << mScalarValues.getFloatValue() << ".0f" << std::endl;
+    }  else {
         out << "float: " << mScalarValues.getFloatValue() << "f" << std::endl;
-    } else {
-        //TODO: test this case
-        out << "float: " << mScalarValues.getFloatValue() << std::endl;
     }
 }
 
 void Converter::printDouble(std::ostream &out) const {
+    double fraction = std::modf(mScalarValues.getDoubleValue(), NULL);
+
     if (mImpossible[InvalidType] || mImpossible[DoubleType]) {
         out << "double: impossible" << std::endl;
-    } else if (isNumber(mScalarValues.getFloatValue())) {
-        //TODO: test this case
-        out << "double: " << mScalarValues.getFloatValue() << std::endl;
+    } else if (isNumber(mScalarValues.getDoubleValue()) &&  fraction == 0.0f) {
+        out << "double: " << mScalarValues.getDoubleValue() << ".0" << std::endl;
+    } else {
+        out << "double: " << mScalarValues.getDoubleValue() << std::endl;
     }
 }
