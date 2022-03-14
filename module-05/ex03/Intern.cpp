@@ -6,7 +6,7 @@ std::string const Intern::sFormsName[3] = {
         "presidential pardon",
 };
 
-AForm *(*sFormCreators[3])(std::string const&) = {
+AForm *(*Intern::sFormCreators[3])(std::string const&) = {
         &Intern::newShrubberyCreationForm,
         &Intern::newRobotomyRequestForm,
         &Intern::newPresidentialPardonForm,
@@ -25,14 +25,14 @@ Intern::Intern(Intern const &copy) {
 }
 
 Intern &Intern::operator=(Intern const &rhs) {
-
+    (void)rhs;
     return *this;
 }
 
 AForm *Intern::makeForm(std::string const &formName, std::string const &target) {
     for (std::size_t i = 0; i < 3; i++) {
         if ( formName == sFormsName[i]) {
-            std::cout << "Intern creates " << formName << std::endl;
+            std::cout << "Intern creates " << formName << " form" << std::endl;
             return (*Intern::sFormCreators)(target);
         }
     }

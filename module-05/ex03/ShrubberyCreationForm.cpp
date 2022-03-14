@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctime>
-#include <cstdlib>
 #include "ShrubberyCreationForm.hpp"
 
 std::string const ShrubberyCreationForm::trees[3] = {
@@ -82,7 +80,7 @@ void	ShrubberyCreationForm::execute( Bureaucrat const& executer ) const {
 	AForm::execute(executer);
 
 	std::string const filename( getName() + "_shrubbery" );
-	std::ofstream targetFile( filename );
+	std::ofstream targetFile( filename.c_str() );
 	if (targetFile.fail())
 		throw std::runtime_error( "failed to open `" + filename + "`" );
 
