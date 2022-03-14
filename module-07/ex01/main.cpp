@@ -1,33 +1,18 @@
-#include <iostream>
-
-template<typename T>
-void    swap(T &a, T &b) {
-    T tmp = a;
-    a = b;
-    b = tmp;
-}
-
-template<typename T>
-T   &max(T &a, T &b) {
-    return (a > b) ? a : b;
-}
-
-template<typename T>
-T   &min(T &a, T &b) {
-    return (a < b) ? a : b;
-}
+#include "iter.hpp"
 
 int main() {
-    int a = 1;
-    int b = 2;
+    int intArr[3] = {1, 2 ,3};
+    iter(intArr, 3, &printElement);
 
-    std::cout << "before swap: a = " << a << ", b = " << b << std::endl;
-    swap(a, b);
-    std::cout << "after swap: a = " << a << ", b = " << b << std::endl;
+    std::cout << std::endl;
 
-    std::cout << "max(" << a << "," << b << ") = " << max(a, b) << std::endl;
+    float floatArr[3] = {100.0f, 101.0f, 102.0f};
+    iter(floatArr, 3, &printElement);
 
-    std::cout << "min(" << a << "," << b << ") = " << min(a, b) << std::endl;
+    std::cout << std::endl;
+
+    std::string names[3] = {"luck", "james", "john"};
+    iter(names, 3, &printElement);
 
     return 0;
 }
