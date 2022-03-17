@@ -28,6 +28,11 @@ int main()
         bloatedNumbers[i] = i;
     }
     superSpan->addNumber(bloatedNumbers.begin(), bloatedNumbers.end());
+
+    // test super span
+    std::cout << "first element of super span: " << superSpan->getVec()[0] << std::endl;
+    std::cout << "last element of super span: " << superSpan->getVec()[spanSize - 1] << std::endl;
+
     delete superSpan;
 
     return 0;

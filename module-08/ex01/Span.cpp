@@ -68,6 +68,10 @@ unsigned int Span::longestSpan() const {
     return longestSpan;
 }
 
+std::vector<int> const &Span::getVec() const {
+    return m_vec;
+}
+
 char const *Span::FullSpanException::what() const throw() {
     return "FullSpanException: span size is full";
 }
