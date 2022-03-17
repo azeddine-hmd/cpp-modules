@@ -23,9 +23,8 @@ public:
 
     void addNumber(int value);
 
-    unsigned int getCurIndex() const;
-
-    std::vector<int> const &getVec() const;
+    template<typename InputIterator>
+    void addNumber(InputIterator begin, InputIterator end);
 
     unsigned int shortestSpan() const;
 
@@ -41,3 +40,10 @@ public:
         virtual char const *what() const throw();
     };
 };
+
+template<typename InputIterator>
+void Span::addNumber(InputIterator begin, InputIterator end) {
+    unsigned int distSize = std::distance(begin, end);
+    unsigned int currentSize = m_curIndex;
+    if (currentSize + distSize > m_vec.size()) throw FullSpanException();
+}

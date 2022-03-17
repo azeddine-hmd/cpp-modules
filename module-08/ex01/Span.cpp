@@ -16,8 +16,8 @@ Span::~Span() {
 
 Span &Span::operator=(Span const &rhs) {
     if (this != &rhs) {
-        m_vec = rhs.getVec();
-        m_curIndex = rhs.getCurIndex();
+        m_vec = rhs.m_vec;
+        m_curIndex = rhs.m_curIndex;
     }
 
     return *this;
@@ -29,14 +29,6 @@ void Span::addNumber(int value) {
 
     m_vec[m_curIndex] = value;
     m_curIndex++;
-}
-
-unsigned int Span::getCurIndex() const {
-    return m_curIndex;
-}
-
-std::vector<int> const &Span::getVec() const {
-    return m_vec;
 }
 
 unsigned int Span::shortestSpan() const {

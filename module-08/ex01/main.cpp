@@ -14,5 +14,21 @@ int main()
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
 
+    try {
+        sp.addNumber(1);
+    } catch (std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
+
+    int spanSize = 20000;
+    Span *superSpan = new Span(spanSize);
+    superSpan->addNumber(99);
+    std::vector<int> bloatedNumbers(spanSize - 1);
+    for (int i = 0; i < spanSize - 1; i++) {
+        bloatedNumbers[i] = i;
+    }
+    superSpan->addNumber(bloatedNumbers.begin(), bloatedNumbers.end());
+    delete superSpan;
+
     return 0;
 }
