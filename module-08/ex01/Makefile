@@ -23,6 +23,6 @@ fclean: clean
 re: fclean all
 
 debug: $(SRC)
-	@$(CC) $(CFLAGS) -g $(SRC) -o debug.exe
+	@$(CC) $(CFLAGS) -g $(SRC) -o debug
 
 .PHONY: clean fclean re debug
