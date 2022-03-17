@@ -1,11 +1,14 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+#include <limits>
 
 class Span {
-    int             *m_arr;
-    unsigned int    m_size;
-    unsigned int    m_curIndex;
+    std::vector<int>    m_vec;
+    unsigned int        m_curIndex;
 
     Span();
 
@@ -20,14 +23,21 @@ public:
 
     void addNumber(int value);
 
-    unsigned int size() const;
-
     unsigned int getCurIndex() const;
 
-    class SpanFullException : public std::exception {
+    std::vector<int> const &getVec() const;
+
+    unsigned int shortestSpan() const;
+
+    unsigned int longestSpan() const;
+
+    class FullSpanException : public std::exception {
     public:
         virtual char const *what() const throw();
-    public:
+    };
 
+    class NoSpanFoundException : public std::exception {
+    public:
+        virtual char const *what() const throw();
     };
 };
