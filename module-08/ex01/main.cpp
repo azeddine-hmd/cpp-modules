@@ -14,12 +14,14 @@ int main()
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
 
+    // test span in case of size is full
     try {
         sp.addNumber(1);
     } catch (std::exception &e){
         std::cout << e.what() << std::endl;
     }
 
+    // test template addNumber function
     int spanSize = 20000;
     Span *superSpan = new Span(spanSize);
     superSpan->addNumber(99);
@@ -30,8 +32,8 @@ int main()
     superSpan->addNumber(bloatedNumbers.begin(), bloatedNumbers.end());
 
     // test super span
-    std::cout << "first element of super span: " << superSpan->getVec()[0] << std::endl;
-    std::cout << "last element of super span: " << superSpan->getVec()[spanSize - 1] << std::endl;
+    std::cout << "superSpan[" << 0 << "] = " << superSpan->getVec()[0] << std::endl;
+    std::cout << "superSpan[" << spanSize - 1 << "] = " << superSpan->getVec()[spanSize - 1] << std::endl;
 
     delete superSpan;
 

@@ -81,5 +81,5 @@ char const*	AForm::GradeTooLowException::what( void ) const throw() {
 }
 
 char const*	AForm::UnsignedFormException::what( void ) const throw() {
-	return "Form: unsgined form cannot be executed";
+	return "Form: unsigned form cannot be executed";
 }

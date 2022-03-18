@@ -1,6 +1,7 @@
 #include <iostream>
 #include "MutantStack.hpp"
 #include <list>
+#include <vector>
 
 # define CONT MutantStack
 # define PUSH push
@@ -8,6 +9,11 @@
 # define POP pop
 
 //# define CONT std::list
+//# define PUSH push_back
+//# define TOP  back
+//# define POP pop_back
+
+//# define CONT std::vector
 //# define PUSH push_back
 //# define TOP  back
 //# define POP pop_back
@@ -23,7 +29,6 @@ int main() {
     mstack.PUSH(3);
     mstack.PUSH(5);
     mstack.PUSH(737);
-//[...]
     mstack.PUSH(0);
     CONT<int>::iterator it = mstack.begin();
     CONT<int>::iterator ite = mstack.end();
@@ -34,5 +39,12 @@ int main() {
         ++it;
     }
     CONT<int> s(mstack);
+
+    // reverse iteration
+    std::cout << std::endl << "my tests:" << std::endl;
+    for (CONT<int>::reverse_iterator riter = mstack.rbegin(); riter != mstack.rend(); riter++) {
+        std::cout << *riter << std::endl;
+    }
+
     return 0;
 }

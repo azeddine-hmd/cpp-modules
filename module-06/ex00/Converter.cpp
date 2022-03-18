@@ -145,10 +145,10 @@ void    Converter::parse() {
             mScalarValues.setFloatValue(NAN);
             mType = FloatType;
         } else if (mValue == "inf" || mValue == "+inf") {
-            mScalarValues.setDoubleValue(std::numeric_limits<float>::infinity());
+            mScalarValues.setDoubleValue(std::numeric_limits<double>::infinity());
             mType = DoubleType;
         } else if (mValue == "-inf") {
-            mScalarValues.setDoubleValue(-std::numeric_limits<float>::infinity());
+            mScalarValues.setDoubleValue(-std::numeric_limits<double>::infinity());
             mType = DoubleType;
         } else if (mValue == "nan") {
             mScalarValues.setDoubleValue(NAN);
@@ -248,8 +248,9 @@ void Converter::fromDouble() {
         mImpossible[IntType] = true;
     }
 
-    if (value > static_cast<double>( std::numeric_limits<float>::max() )
-        || value < static_cast<double>( -std::numeric_limits<float>::max() )
+    if ( isNumber(value)
+         && (value > static_cast<double>( std::numeric_limits<float>::max() )
+        || value < static_cast<double>( -std::numeric_limits<float>::max() ) )
     ) {
         mImpossible[FloatType] = true;
     }
@@ -282,7 +283,8 @@ void Converter::printInt(std::ostream &out) const {
 }
 
 void Converter::printFloat(std::ostream &out) const {
-    float fraction = std::modf(mScalarValues.getFloatValue(), NULL);
+    float intpart = 0.0f;
+    float fraction = std::modf(mScalarValues.getFloatValue(), &intpart);
 
     if (mImpossible[InvalidType] || mImpossible[FloatType]) {
         out << "float: impossible" << std::endl;
@@ -294,7 +296,8 @@ void Converter::printFloat(std::ostream &out) const {
 }
 
 void Converter::printDouble(std::ostream &out) const {
-    double fraction = std::modf(mScalarValues.getDoubleValue(), NULL);
+    float intpart = 0.0f;
+    double fraction = std::modf(mScalarValues.getDoubleValue(), &intpart);
 
     if (mImpossible[InvalidType] || mImpossible[DoubleType]) {
         out << "double: impossible" << std::endl;

@@ -7,12 +7,12 @@
 #include <limits>
 
 class Span {
+private:
     std::vector<int>    m_vec;
-    unsigned int        m_curIndex;
-
+    unsigned int        m_maxSize;
+public:
     Span();
 
-public:
     Span(unsigned int n);
 
     Span(Span const &copy);
@@ -45,12 +45,9 @@ public:
 
 template<typename InputIterator>
 void Span::addNumber(InputIterator begin, InputIterator end) {
-    unsigned int distSize = std::distance(begin, end);
-    unsigned int currentSize = m_curIndex;
-    if (currentSize + distSize > m_vec.size()) throw FullSpanException();
+    unsigned int dist = std::distance(begin, end);
+    if (m_vec.size() + dist > m_maxSize) throw FullSpanException();
 
-    for (InputIterator iter = begin; iter != end; iter++) {
-        m_vec[m_curIndex] = *iter;
-        m_curIndex++;
-    }
+    for (InputIterator iter = begin; iter != end; iter++)
+        m_vec.push_back(*iter);
 }

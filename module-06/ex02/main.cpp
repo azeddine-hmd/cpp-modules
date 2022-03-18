@@ -49,17 +49,20 @@ void identify(Base &p) {
     std::cout << "using reference, the type is: ";
 
     try {
-        dynamic_cast<A&>(p);
+        A& result = dynamic_cast<A&>(p);
+        (void)result;
         std::cout << "A" << std::endl;
     } catch (std::bad_cast &e) {
 
         try {
-            dynamic_cast<B&>(p);
+            B& result = dynamic_cast<B&>(p);
+            (void)result;
             std::cout << "B" << std::endl;
         } catch (std::bad_cast &e) {
 
             try {
-                dynamic_cast<C&>(p);
+                C& result = dynamic_cast<C&>(p);
+                (void)result;
                 std::cout << "C" << std::endl;
             } catch (std::bad_cast &e) {
                 std::cout << "unknown" << std::endl;

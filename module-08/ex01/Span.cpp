@@ -1,12 +1,12 @@
 #include "Span.hpp"
 
-Span::Span()  {}
+Span::Span(): m_vec(std::vector<int>()), m_maxSize(0)  {}
 
-Span::Span(unsigned int n): m_vec(0), m_curIndex(0) {
-    m_vec = std::vector<int>(n);
+Span::Span(unsigned int n): m_vec(std::vector<int>()), m_maxSize(n) {
+
 }
 
-Span::Span(Span const &copy): m_vec(0), m_curIndex(0) {
+Span::Span(Span const &copy) {
     *this = copy;
 }
 
@@ -15,36 +15,34 @@ Span::~Span() {
 }
 
 Span &Span::operator=(Span const &rhs) {
-    if (this != &rhs) {
-        m_vec = rhs.m_vec;
-        m_curIndex = rhs.m_curIndex;
-    }
+    m_vec = rhs.m_vec;
+    m_maxSize = rhs.m_maxSize;
 
     return *this;
 }
 
 void Span::addNumber(int value) {
-    if (m_curIndex == m_vec.size())
+    if (m_vec.size() == m_maxSize)
         throw FullSpanException();
-
-    m_vec[m_curIndex] = value;
-    m_curIndex++;
+    m_vec.push_back(value);
 }
 
 unsigned int Span::shortestSpan() const {
     if (m_vec.size() <= 1) throw NoSpanFoundException();
 
-    int shortestSpan = std::abs(*m_vec.begin() - *(++m_vec.begin()));
+    std::vector<int> sortedVec = m_vec;
+    std::sort(sortedVec.begin(), sortedVec.end());
 
-    for(std::vector<int>::const_iterator iter = m_vec.begin(); iter != m_vec.end(); iter++) {
-        for(std::vector<int>::const_iterator targetIter = m_vec.begin(); targetIter != m_vec.end(); targetIter++) {
-            if (iter == targetIter)
-                continue ;
-            int span = std::abs(*iter - *targetIter);
-            if (std::abs(span) < shortestSpan)
-                shortestSpan = span;
+    unsigned int shortestSpan = std::abs( *sortedVec.begin() - *(++sortedVec.begin()) );
 
-        }
+    std::vector<int>::const_iterator current = sortedVec.begin();
+    std::vector<int>::const_iterator next = ++( sortedVec.begin() );
+    while (next != sortedVec.end()) {
+        unsigned int span = std::abs(*next - *current);
+        if (span < shortestSpan)
+            shortestSpan = span;
+        current++;
+        next++;
     }
 
     return shortestSpan;
@@ -53,17 +51,10 @@ unsigned int Span::shortestSpan() const {
 unsigned int Span::longestSpan() const {
     if (m_vec.size() <= 1) throw NoSpanFoundException();
 
-    int longestSpan = std::abs(*m_vec.begin() - *(++m_vec.begin()));
+    int minimum = *std::min_element(m_vec.begin(), m_vec.end());
+    int maximum = *std::max_element(m_vec.begin(), m_vec.end());
 
-    for(std::vector<int>::const_iterator iter = m_vec.begin(); iter != m_vec.end(); iter++) {
-        for(std::vector<int>::const_iterator targetIter = m_vec.begin(); targetIter != m_vec.end(); targetIter++) {
-            if (iter == targetIter)
-                continue ;
-            int span = std::abs(*iter - *targetIter);
-            if (span > longestSpan)
-                longestSpan = span;
-        }
-    }
+    unsigned int longestSpan = std::abs(maximum - minimum);
 
     return longestSpan;
 }
